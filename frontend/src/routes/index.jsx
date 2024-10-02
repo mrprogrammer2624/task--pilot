@@ -63,6 +63,21 @@ const TaskPilotRoute = createBrowserRouter(
       ],
     },
     {
+      /* Admin Router */
+      path: "/admin",
+      children: [
+        {
+          element: <AuthLayout />,
+          children: [
+            {
+              path: "signup",
+              element: <SignUp />,
+            },
+          ],
+        },
+      ],
+    },
+    {
       /* Default Route (404) */
       path: "*",
       element: <>404 - Page Not Found</>,

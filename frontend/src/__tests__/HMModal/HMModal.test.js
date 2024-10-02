@@ -1,5 +1,5 @@
+import { HMModal } from "@/components";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { HMModal } from "./HMModal"; // Adjust the import path as necessary
 
 describe("HMModal", () => {
   const mockHandleClose = jest.fn();
@@ -7,7 +7,6 @@ describe("HMModal", () => {
   const mockHandleCancel = jest.fn();
 
   beforeEach(() => {
-    // Clear all instances and calls to the mocked functions
     jest.clearAllMocks();
   });
 
@@ -24,9 +23,7 @@ describe("HMModal", () => {
       </HMModal>
     );
 
-    // Check if the modal title is rendered
     expect(screen.getByText("Test Modal")).toBeInTheDocument();
-    // Check if the modal content is rendered
     expect(screen.getByText("Modal Content")).toBeInTheDocument();
   });
 
@@ -43,7 +40,6 @@ describe("HMModal", () => {
       </HMModal>
     );
 
-    // Check if the modal title is not rendered
     expect(screen.queryByText("Test Modal")).not.toBeInTheDocument();
   });
 

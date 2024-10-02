@@ -1,6 +1,6 @@
 import { Checkbox } from "antd";
 import clsx from "clsx";
-import styles from "./HMCheckbox.module.css"
+import styles from "./HMCheckbox.module.css";
 
 export const HMCheckbox = ({
   value,
@@ -17,11 +17,11 @@ export const HMCheckbox = ({
     <Checkbox
       value={value}
       onChange={onChange}
-      className={clsx(styles.CheckBox,className)}
+      className={clsx(styles.CheckBox, className)}
       disabled={disabled}
       id={id}
       name={name}
-      {...(checked && checked)}
+      checked={checked}
       {...rest}
     >
       {children}

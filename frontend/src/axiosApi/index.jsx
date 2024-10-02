@@ -1,5 +1,5 @@
 import axios from "axios";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL; // Access environment variable in Vite
 
@@ -26,6 +26,7 @@ axiosApi.interceptors.response.use(
   (error) => {
     if (error?.response?.status === 404) {
       console.log(" ERROR => 404 => API not available");
+      toast.error(error.response.data.message);
     } else if (error?.response?.status === 500) {
       console.log(" ERROR => 500 => Server Error");
       toast.error(error.response.data.message);
@@ -33,11 +34,10 @@ axiosApi.interceptors.response.use(
       toast.error(error.response.data.message);
       console.log(" ERROR => 401 => User is not authorized");
       if (localStorage.getItem("_token")) {
-        // localStorage.removeItem("_token");
-        window.location.href = "/"; // Redirect to home
+        window.location.href = "/";
       }
     } else {
-      console.log("/other-errors.");
+      toast.error("/other-errors.");
     }
 
     return Promise.reject(error);
